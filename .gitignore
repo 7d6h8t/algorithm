@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# ignore folder
+build/
+bin/
+temp/
+props/
