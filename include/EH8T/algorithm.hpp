@@ -13,4 +13,24 @@ namespace EH8T
         }
         return false;
     }
+
+    template <typename _Ty>
+    bool binary_search(const std::vector<_Ty>& data, const _Ty& value)
+    {
+        size_t lower = 0;
+        size_t upper = data.size() - 1;
+
+        while (lower <= upper)
+        {
+            size_t middle = (lower + upper) / 2;
+
+            if (data[middle] == value)
+                return true;
+            else if (data[middle] < value)
+                lower = middle + 1;
+            else
+                upper = middle - 1;
+        }
+        return false;
+    }
 } //namespace EH8T
