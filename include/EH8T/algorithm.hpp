@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+#include <algorithm>
 
 namespace EH8T
 {
@@ -14,23 +14,14 @@ namespace EH8T
         return last;
     }
 
-    template <typename _Ty>
-    bool binary_search(const std::vector<_Ty>& data, const _Ty& value)
+    template <typename _FwdIt, typename _Ty>
+    inline bool binary_search(_FwdIt first, _FwdIt last, const _Ty& value)
     {
-        size_t lower = 0;
-        size_t upper = data.size() - 1;
+        first = std::lower_bound(first, last, value);
 
-        while (lower <= upper)
-        {
-            size_t middle = (lower + upper) / 2;
+        if (first == last)
+            return false;
 
-            if (data[middle] == value)
-                return true;
-            else if (data[middle] < value)
-                lower = middle + 1;
-            else
-                upper = middle - 1;
-        }
-        return false;
+        return !(value < *first);
     }
 } //namespace EH8T
