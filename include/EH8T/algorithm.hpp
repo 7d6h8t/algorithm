@@ -3,6 +3,17 @@
 
 namespace EH8T
 {
+    template <typename _InIt, typename _Ty>
+    inline _InIt find(_InIt first, const _InIt last, const _Ty& value)
+    {
+        for (; first != last; ++first)
+        {
+            if (*first == value)
+                return first;
+        }
+        return last;
+    }
+
     template <typename _Ty>
     bool linear_search(const std::vector<_Ty>& data, const _Ty& value)
     {
